@@ -1,9 +1,18 @@
-import { getRandomColorGrid } from "../tools"
+import { getRandomColorGrid } from "../tools";
 
 export const PageWelcome = () => {
-	return /*html*/`
+
+	setTimeout(() => {
+		const contentElem = document.querySelector(".content");
+
+		if (contentElem) {
+			contentElem.innerHTML = getRandomColorGrid();
+		}
+	}, 0);
+
+	return /*html*/ `
 <div class="page pageWelcome">
-	<p>${getRandomColorGrid()}</p>
+	<p class="content">Loading...</p>
 </div>
-`; 
-}
+`;
+};
