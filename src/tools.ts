@@ -33,30 +33,36 @@ export const cleanCharactersToAscii = (text: string) => {
 	return text;
 };
 
+export const calculateTaxesForYear = () => {
+	return 8273493.34;
+}
+
 export const getRandomNumber = (start = 0, end = 9) => {
-	return Math.floor(Math.random() *( end - start + 1)) + start;
+	return Math.floor(Math.random() * (end - start + 1)) + start;
 };
 
 export const getRandomColorGrid = (width = 1000, height = 200) => {
-	let html = "";
+	return new Promise<string>((resolve) => {
+		let html = "";
 
-	const colors = ["red", "green", "blue", "yellow"];
+		const colors = ["red", "green", "blue", "yellow"];
 
-	html += "<table>";
+		html += "<table>";
 
-	for (let y = 1; y <= height; y++) {
-		html += "<tr>";
+		for (let y = 1; y <= height; y++) {
+			html += "<tr>";
 
-		for (let x = 1; x <= width; x++) {
-			const rand = tools.getRandomNumber();
-			const randomIndex = tools.getRandomNumber(0, colors.length - 1);
-			const randomColor = colors[randomIndex];
-			html += `<td style="color: ${randomColor}">${rand}</td>`;
+			for (let x = 1; x <= width; x++) {
+				const rand = tools.getRandomNumber();
+				const randomIndex = tools.getRandomNumber(0, colors.length - 1);
+				const randomColor = colors[randomIndex];
+				html += `<td style="color: ${randomColor}">${rand}</td>`;
+			}
 		}
-	}
-	html += "</tr>";
+		html += "</tr>";
 
-	html += "</table>";
+		html += "</table>";
 
-	return html;
+		resolve(html);
+	});
 };

@@ -2,11 +2,11 @@ import { getRandomColorGrid } from "../tools";
 
 export const PageWelcome = () => {
 
-	setTimeout(() => {
-		const contentElem = document.querySelector(".content");
+	setTimeout(async () => {
+		const contentElem = document.querySelector<HTMLParagraphElement>(".content");
 
 		if (contentElem) {
-			contentElem.innerHTML = getRandomColorGrid();
+			contentElem.innerHTML = await getRandomColorGrid();
 		}
 	}, 0);
 
