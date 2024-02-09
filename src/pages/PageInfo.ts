@@ -7,14 +7,29 @@ export const PageInfo = () => {
 		const taxes2022Elem = document.querySelector<HTMLSpanElement>(".taxes2022");
 
 		if (taxes2020Elem && taxes2021Elem && taxes2022Elem) {
-			taxes2020Elem.innerHTML = String(await calculateTaxesForYear());
-			taxes2021Elem.innerHTML = String(await calculateTaxesForYear());
-			taxes2022Elem.innerHTML = String(await calculateTaxesForYear());
+
+			const promise2020 = calculateTaxesForYear(); 
+			const promise2021 = calculateTaxesForYear(); 
+			const promise2022 = calculateTaxesForYear(); 
+
+			// const [taxes2020, taxes2021, taxes2022] = await Promise.all([promise2020, promise2021, promise2022]);
+			// Promise.any([promise2020, promise2021, promise2022]).then((value:number) => console.log(value))
+			promise2020.then((value) => {
+				taxes2020Elem.innerHTML = String(value);
+			}); 
+			promise2021.then((value) => {
+				taxes2021Elem.innerHTML = String(value);
+			}); 
+			promise2022.then((value) => {
+				taxes2022Elem.innerHTML = String(value);
+			}); 
+
 		}
 	}, 0);
 
 	return /*html*/ `
 <div class="page pageInfo">
+	<input/>
 	<p>2020 Taxes: <span class="taxes2020">...loading...</span></p>
 	<p>2021 Taxes: <span class="taxes2021">...loading...</span></p>
 	<p>2022 Taxes: <span class="taxes2022">...loading...</span></p>
