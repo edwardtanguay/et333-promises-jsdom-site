@@ -34,8 +34,12 @@ export const cleanCharactersToAscii = (text: string) => {
 };
 
 export const calculateTaxesForYear = () => {
-	return 8273493.34;
-}
+	return new Promise<number>((resolve) => {
+		setTimeout(() => {
+			resolve(234344.34);
+		}, 3000);
+	});
+};
 
 export const getRandomNumber = (start = 0, end = 9) => {
 	return Math.floor(Math.random() * (end - start + 1)) + start;

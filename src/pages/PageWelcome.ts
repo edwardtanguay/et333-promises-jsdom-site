@@ -5,8 +5,10 @@ export const PageWelcome = () => {
 	setTimeout(async () => {
 		const contentElem = document.querySelector<HTMLParagraphElement>(".content");
 
+		const html = await getRandomColorGrid();
+
 		if (contentElem) {
-			contentElem.innerHTML = await getRandomColorGrid();
+			contentElem.innerHTML = html;
 		}
 	}, 0);
 
