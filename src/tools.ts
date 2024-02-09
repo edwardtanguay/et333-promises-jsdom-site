@@ -42,6 +42,14 @@ export const calculateTaxesForYear = () => {
 	});
 };
 
+export const processRecords = (finished: (numberOfRecords: number) => void) => {
+	const secondsToWait = tools.getRandomNumber(1, 5);
+	const numberOfRecords = tools.getRandomNumber(300,5000);
+	setTimeout(() => {
+		finished(numberOfRecords);
+	}, secondsToWait * 1000);
+};
+
 export const getRandomNumber = (start = 0, end = 9) => {
 	return Math.floor(Math.random() * (end - start + 1)) + start;
 };
