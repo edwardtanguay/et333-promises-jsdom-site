@@ -34,10 +34,11 @@ export const cleanCharactersToAscii = (text: string) => {
 };
 
 export const calculateTaxesForYear = () => {
+	const secondsToWait = tools.getRandomNumber(1, 5);
 	return new Promise<number>((resolve) => {
 		setTimeout(() => {
 			resolve(234344.34);
-		}, 3000);
+		}, secondsToWait * 1000);
 	});
 };
 
